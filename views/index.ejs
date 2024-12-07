@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PriEasyng Quote Form</title>
+</head>
+<body>
+    <h1>Solicitud de Cotización - PriEasyng</h1>
+    <form action="/quote" method="post" id="quoteForm">
+        <!-- puerto_origen -->
+        <label for="puerto_origen">Puerto_origen:</label>
+        <select name="puerto_origen" id="puerto_origen" required>
+            <option value="">Seleccione un puerto</option>
+            <option value="Shanghai">Shanghai</option>
+            <option value="Shenzhen">Shenzhen</option>
+            <option value="Ningbo">Ningbo</option>
+            <option value="Guangzhou">Guangzhou</option>
+            <option value="Qingdao">Qingdao</option>
+            <option value="Hong Kong">Hong Kong</option>
+            <option value="Shanghai - IMO CARGO">Shanghai - IMO CARGO</option>
+            <option value="Qingdao">Qingdao</option>
+            <option value="Nhava Sheva">Nhava Sheva</option>
+            <option value="Busan">Busan</option>
+            <option value="Kaohsiung">Kaohsiung</option>
+            <option value="Keelung (Chilung)">Keelung (Chilung)</option>
+            <option value="Otro">Otro</option>
+        </select>
+        <input type="text" id="otro_origen" name="otro_origen" style="display:none;" placeholder="Escriba el puerto de origen">
+
+        <!-- puerto_destino -->
+        <label for="puerto_destino">puerto_destino:</label>
+        <select name="puerto_destino" id="puerto_destino" required>
+            <option value="">Seleccione un puerto</option>
+            <option value="Buenaventura">Buenaventura</option>
+            <option value="Bogotá">Bogotá</option>
+            <option value="Cartagena">Cartagena</option>
+            <option value="Barranquilla">Barranquilla</option>
+            <option value="Otro">Otro</option>
+        </select>
+        <input type="text" id="otro_destino" name="otro_destino" style="display:none;" placeholder="Escriba el puerto de destino">
+
+
+        <!-- producto -->
+        <label for="producto">producto:</label>
+        <select name="producto" id="producto" required>
+            <option value="">Seleccione un tipo de producto</option>
+            <option value="Contenedor 40Std">Contenedor 40Std</option>
+            <option value="Contenedor 40HC">Contenedor 40HC</option>
+            <option value="Contenedor 40NOR">Contenedor 40NOR</option>
+            <option value="Contenedor 20">Contenedor 20</option>
+            <option value="AIR">AIR</option>
+            <option value="LCL">LCL</option>
+        </select>
+
+        <!-- Detalles Adicionales para AIR y LCL -->
+        <div id="detalles_producto" style="display:none;">
+            <label for="no_pallets">No. de Pallets/Cajas/Bultos:</label>
+            <input type="text" id="no_pallets" name="no_pallets">
+
+            <label for="peso_pallets">Peso de Pallets/Cajas/Bultos:</label>
+            <input type="text" id="peso_pallets" name="peso_pallets">
+
+            <label for="dimensiones_pallets">Dimensiones por Pallets/Cajas/Bultos:</label>
+            <input type="text" id="dimensiones_pallets" name="dimensiones_pallets">
+        </div>
+        <!-- incoterm -->
+        <label for="incoterm_"> incoterm:</label>
+        <select name=" incoterm " id=" incoterm " required>
+            <option value="">Seleccione un término</option>
+            <option value="EXW">EXW</option>
+            <option value="CIF">CIF</option>
+            <option value="FOB">FOB</option>
+            <option value="CPT">CPT</option>
+            <option value="DDP">DDP</option>
+            <option value="Otro">Otro</option>
+        </select>
+        <input type="text" id="otro_ incoterm " name="otro_ incoterm " style="display:none;" placeholder="Escriba el incoterm ">
+
+
+                <!-- Campo de Correo Electrónico -->
+                <label for="email_cliente">Correo Electrónico:</label>
+                <input type="email" id="email_cliente" name="email_cliente" required placeholder="Ingrese su correo electrónico">
+        
+
+        <button type="submit">Enviar Cotización</button>
+    </form>
+
+    <script>
+        document.getElementById('producto').addEventListener('change', function() {
+            var valor = this.value;
+            var detalles = document.getElementById('detalles_producto');
+            detalles.style.display = (valor === 'AIR' || valor === 'LCL') ? 'block' : 'none';
+        });
+
+        document.getElementById('puerto_origen').addEventListener('change', function() {
+            var otro = document.getElementById('otro_origen');
+            otro.style.display = (this.value === 'Otro') ? 'block' : 'none';
+        });
+
+        document.getElementById('puerto_destino').addEventListener('change', function() {
+            var otro = document.getElementById('otro_destino');
+            otro.style.display = (this.value === 'Otro') ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
