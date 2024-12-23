@@ -9,117 +9,134 @@
     <title>PriEasyng Quote</title>
 </head>
 
-<body>
-    <div>
-        <div class="container shadow p-3 rounded-4 border border-2 border-info mt-4">
-            <h1 class="text-center my-4 fw-bold">Solicitud de Cotización - PriEasyng</h1>
-            <div class="">
-                <form action="/quote" method="post" id="quoteForm" class="d-flex flex-column gap-4">
+<body class="bg-body">
 
-                    <!-- puerto_origen -->
-                    <div>
-                        <label class="form-label" for="puerto_origen">Puerto de origen:</label>
-                        <select class="form-select" name="puerto_origen" id="puerto_origen" required>
-                            <option value="">Seleccione un puerto</option>
-                            <option value="Shanghai">Shanghai</option>
-                            <option value="Shenzhen">Shenzhen</option>
-                            <option value="Ningbo">Ningbo</option>
-                            <option value="Guangzhou">Guangzhou</option>
-                            <option value="Qingdao">Qingdao</option>
-                            <option value="Hong Kong">Hong Kong</option>
-                            <option value="Shanghai - IMO CARGO">Shanghai - IMO CARGO</option>
-                            <option value="Qingdao">Qingdao</option>
-                            <option value="Nhava Sheva">Nhava Sheva</option>
-                            <option value="Busan">Busan</option>
-                            <option value="Kaohsiung">Kaohsiung</option>
-                            <option value="Keelung (Chilung)">Keelung (Chilung)</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                        <input class="form-control mt-2" type="text" id="otro_origen" name="otro_origen"
-                            style="display:none;" placeholder="Escriba el puerto de origen">
+    <!-- navbar -->
+    <nav class="navbar bg-navbar shadow">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold text-white" href="#">PriEasyng</a>
+        </div>
+    </nav>
+
+    <div class="my-4 container p-4 shadow bg-content">
+        <div class="accordion border-acordion shadow" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item shadow">
+                <h2 class="accordion-header">
+                    <button class="accordion-button fw-bold fs-3 text-success" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                        aria-controls="panelsStayOpen-collapseOne">
+                        Solicitud de Cotización - PriEasyng
+                    </button>
+                </h2>
+                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                    <div class="accordion-body">
+                        <form action="/quote" method="post" id="quoteForm" class="d-flex flex-column gap-4">
+                            <!-- puerto_origen -->
+                            <div>
+                                <label class="form-label" for="puerto_origen">Puerto de origen:</label>
+                                <select class="form-select border-2 border-success shadow" name="puerto_origen"
+                                    id="puerto_origen" required>
+                                    <option value="">Seleccione un puerto</option>
+                                    <option value="Shanghai">Shanghai</option>
+                                    <option value="Shenzhen">Shenzhen</option>
+                                    <option value="Ningbo">Ningbo</option>
+                                    <option value="Guangzhou">Guangzhou</option>
+                                    <option value="Qingdao">Qingdao</option>
+                                    <option value="Hong Kong">Hong Kong</option>
+                                    <option value="Shanghai - IMO CARGO">Shanghai - IMO CARGO</option>
+                                    <option value="Qingdao">Qingdao</option>
+                                    <option value="Nhava Sheva">Nhava Sheva</option>
+                                    <option value="Busan">Busan</option>
+                                    <option value="Kaohsiung">Kaohsiung</option>
+                                    <option value="Keelung (Chilung)">Keelung (Chilung)</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <input class="form-control input-style mt-3" type="text" id="otro_origen"
+                                    name="otro_origen" style="display:none;" placeholder="Escriba el puerto de origen">
+                            </div>
+
+                            <!-- puerto_destino -->
+                            <div>
+                                <label class="form-label" for="puerto_destino">Puerto de destino:</label>
+                                <select class="form-select border-2 border-success shadow" name="puerto_destino"
+                                    id="puerto_destino" required>
+                                    <option value="">Seleccione un puerto</option>
+                                    <option value="Buenaventura">Buenaventura</option>
+                                    <option value="Bogotá">Bogotá</option>
+                                    <option value="Cartagena">Cartagena</option>
+                                    <option value="Barranquilla">Barranquilla</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <input class="form-control input-style mt-3" type="text" id="otro_destino"
+                                    name="otro_destino" style="display:none;"
+                                    placeholder="Escriba el puerto de destino">
+                            </div>
+
+                            <!-- producto -->
+                            <div>
+                                <label class="form-label" for="producto">Producto:</label>
+                                <select class="form-select border-2 border-success shadow" name="producto" id="producto"
+                                    required>
+                                    <option value="">Seleccione un tipo de producto</option>
+                                    <option value="Contenedor 40Std">Contenedor 40Std</option>
+                                    <option value="Contenedor 40HC">Contenedor 40HC</option>
+                                    <option value="Contenedor 40NOR">Contenedor 40NOR</option>
+                                    <option value="Contenedor 20">Contenedor 20</option>
+                                    <option value="AIR">AIR</option>
+                                    <option value="LCL">LCL</option>
+                                </select>
+                            </div>
+
+                            <!-- Detalles Adicionales para AIR y LCL -->
+                            <div id="detalles_producto" style="display:none;">
+                                <label class="form-label" for="no_pallets">No. de Pallets/Cajas/Bultos:</label>
+                                <input class="form-control mt-2" type="text" id="no_pallets" name="no_pallets">
+
+                                <label class="form-label" for="peso_pallets">Peso de Pallets/Cajas/Bultos:</label>
+                                <input class="form-control mt-2" type="text" id="peso_pallets" name="peso_pallets">
+
+                                <label class="form-label" for="dimensiones_pallets">Dimensiones por
+                                    Pallets/Cajas/Bultos:</label>
+                                <input class="form-control mt-2" type="text" id="dimensiones_pallets"
+                                    name="dimensiones_pallets">
+                            </div>
+
+                            <!-- incoterm -->
+                            <div>
+                                <label class="form-label" for="incoterm_"> Incoterm:</label>
+                                <select class="form-select border-2 border-success shadow" name="incoterm"
+                                    id="incoterm" required>
+                                    <option value="">Seleccione un término</option>
+                                    <option value="EXW">EXW</option>
+                                    <option value="CIF">CIF</option>
+                                    <option value="FOB">FOB</option>
+                                    <option value="CPT">CPT</option>
+                                    <option value="DDP">DDP</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                                <input class="form-control input-style mt-3" type="text" id="otro_ incoterm"
+                                    name="otro_ incoterm" style="display:none;" placeholder="Escriba el incoterm ">
+                            </div>
+
+                            <!-- Campo de Correo Electrónico -->
+                            <div>
+                                <label class="form-label" for="email_cliente">Correo Electrónico:</label>
+                                <input class="form-control input-style mt-2" type="email" id="email_cliente"
+                                    name="email_cliente" required placeholder="Ingrese su correo electrónico">
+
+                            </div>
+
+                            <div class="text-center mt-1">
+                                <button class="btn btn-success btn-style" type="submit">Enviar Cotización</button>
+                            </div>
+                        </form>
                     </div>
-
-                    <!-- puerto_destino -->
-                    <div>
-                        <label class="form-label" for="puerto_destino">Puerto de destino:</label>
-                        <select class="form-select" name="puerto_destino" id="puerto_destino" required>
-                            <option value="">Seleccione un puerto</option>
-                            <option value="Buenaventura">Buenaventura</option>
-                            <option value="Bogotá">Bogotá</option>
-                            <option value="Cartagena">Cartagena</option>
-                            <option value="Barranquilla">Barranquilla</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                        <input class="form-control mt-2" type="text" id="otro_destino" name="otro_destino"
-                            style="display:none;" placeholder="Escriba el puerto de destino">
-                    </div>
-
-
-                    <!-- producto -->
-                    <div>
-                        <label class="form-label" for="producto">Producto:</label>
-                        <select class="form-select" name="producto" id="producto" required>
-                            <option value="">Seleccione un tipo de producto</option>
-                            <option value="Contenedor 40Std">Contenedor 40Std</option>
-                            <option value="Contenedor 40HC">Contenedor 40HC</option>
-                            <option value="Contenedor 40NOR">Contenedor 40NOR</option>
-                            <option value="Contenedor 20">Contenedor 20</option>
-                            <option value="AIR">AIR</option>
-                            <option value="LCL">LCL</option>
-                        </select>
-                    </div>
-
-                    <!-- Detalles Adicionales para AIR y LCL -->
-                    <div id="detalles_producto" style="display:none;">
-                        <label class="form-label" for="no_pallets">No. de Pallets/Cajas/Bultos:</label>
-                        <input class="form-control mt-2" type="text" id="no_pallets" name="no_pallets">
-
-                        <label class="form-label" for="peso_pallets">Peso de Pallets/Cajas/Bultos:</label>
-                        <input class="form-control mt-2" type="text" id="peso_pallets" name="peso_pallets">
-
-                        <label class="form-label" for="dimensiones_pallets">Dimensiones por
-                            Pallets/Cajas/Bultos:</label>
-                        <input class="form-control mt-2" type="text" id="dimensiones_pallets"
-                            name="dimensiones_pallets">
-                    </div>
-
-                    <!-- incoterm -->
-                    <div>
-                        <label class="form-label" for="incoterm_"> Incoterm:</label>
-                        <select class="form-select" name=" incoterm " id=" incoterm " required>
-                            <option value="">Seleccione un término</option>
-                            <option value="EXW">EXW</option>
-                            <option value="CIF">CIF</option>
-                            <option value="FOB">FOB</option>
-                            <option value="CPT">CPT</option>
-                            <option value="DDP">DDP</option>
-                            <option value="Otro">Otro</option>
-                        </select>
-                        <input class="form-control mt-2" type="text" id="otro_ incoterm " name="otro_ incoterm "
-                            style="display:none;" placeholder="Escriba el incoterm ">
-                    </div>
-
-
-                    <!-- Campo de Correo Electrónico -->
-                    <div>
-                        <label class="form-label" for="email_cliente">Correo Electrónico:</label>
-                        <div
-                            class="d-flex align-items-center gap-1 mt-input border-bottom border-primary border-2 w-100 text-primary">
-                            <input class="form-control input-login mt-2" type="email" id="email_cliente"
-                                name="email_cliente" required placeholder="Ingrese su correo electrónico">
-                        </div>
-
-                    </div>
-
+                </div>
             </div>
-
-            <div class="text-center">
-                <button class="btn btn-primary" type="submit">Enviar Cotización</button>
-            </div>
-            </form>
         </div>
     </div>
-    </div>
+
+
 
 
     <script src="bootstrap-5.3.3-dist/js/bootstrap.min.js"></script>
@@ -138,6 +155,11 @@
 
         document.getElementById('puerto_destino').addEventListener('change', function () {
             var otro = document.getElementById('otro_destino');
+            otro.style.display = (this.value === 'Otro') ? 'block' : 'none';
+        });
+
+        document.getElementById('incoterm').addEventListener('change', function () {
+            var otro = document.getElementById('otro_ incoterm');
             otro.style.display = (this.value === 'Otro') ? 'block' : 'none';
         });
     </script>
